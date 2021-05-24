@@ -1,3 +1,4 @@
+import entity.AppData;
 import persistance.ManageFile;
 
 public class Application {
@@ -24,6 +25,10 @@ public class Application {
 	private static void saveData() {
 		
 		manageFile.saveAppData();
+	}
+	
+	public static AppData showData() {
+		return manageFile.getAppObject();
 	}
 
 }

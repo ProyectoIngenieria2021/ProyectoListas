@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import entity.UserList;
+import entity.AppData;
 import entity.Item;
 import entity.User;
 
@@ -142,6 +143,28 @@ public class ManageFile {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public AppData getAppObject() {
+		Properties properties = new Properties();
+		
+		int totalUsers = 0;
+		int totalLists = 0;
+		int totalItems = 0;
+		
+		try {
+			properties.load(new FileReader(file));
+			totalUsers = Integer.parseInt(properties.getProperty("totalUsers"));
+			totalLists = Integer.parseInt(properties.getProperty("totalLists"));
+			totalItems = Integer.parseInt(properties.getProperty("totalItems"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new AppData(totalUsers, totalLists, totalItems);
+	}
+
 	
 	public void restoreAppData() {
 		Properties properties = new Properties();
